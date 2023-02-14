@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Lang, useFormInputValidation } from "react-form-input-validation";
 import smallCircle from "../images/smallCircle.svg";
 import mediumCircle from "../images/mediumCircle.svg";
 import sideBigCircle from "../images/sideBigCircle.svg";
@@ -8,6 +9,43 @@ import curveArrow from "../images/curve-arrow.svg";
 import star from "../images/star.svg";
 
 const ArticleOne = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [fields, errors, form] = useFormInputValidation(
+    {
+      customer_name: "",
+      email_address: "",
+    },
+    {
+      customer_name: "required|username_available",
+      email_address: "required|email",
+    }
+  );
+
+  useEffect(() => {
+    form.registerAsync(
+      "username_available",
+      function (username, attribute, req, passes) {
+        setTimeout(() => {
+          if (username === "foo")
+            passes(false, "Username has already been taken.");
+          // if username is not available
+          else passes();
+        }, 1000);
+      }
+    );
+  }, []);
+
+  form.useLang(Lang.en);
+
+  const onSubmit = async (event) => {
+    const isValid = await form.validate(event);
+    if (isValid) {
+      console.log("MAKE AN API CALL", fields, errors);
+    }
+  };
+
   return (
     <div className=" pt-24 md:pt-[6.5rem] text-center">
       <div className="relative  pb-10 md:pt-20">
@@ -58,29 +96,58 @@ const ArticleOne = () => {
             programs, track customer engagement, and gain valuable insights to
             improve your business. Sign up now to get early access.
           </p>
-          <form className="mt-5 md:px-[11rem] lg:px-[18rem] xl:px-[25rem] x:px-[28rem]">
-            <div
-              className="flex items-center rounded-md py-[14px] px-[12px]"
-              style={{ border: "1px solid white" }}
-            >
-              <img src={Profile} alt="Profile" />
-              <input
-                className="ml-4 w-full text-white"
-                type="text"
-                placeholder="Tell us your name"
-              />
+          <form
+            className="mt-5 md:px-[11rem] lg:px-[18rem] xl:px-[25rem] x:px-[28rem]"
+            noValidate
+            autoComplete="off"
+            onSubmit={onSubmit}
+          >
+            <div>
+              <div
+                className="flex items-center rounded-md py-[14px] px-[12px]"
+                style={{ border: "1px solid white" }}
+              >
+                <img src={Profile} alt="Profile" />
+                <input
+                  className="ml-4 w-full text-white"
+                  type="text"
+                  placeholder="Tell us your name"
+                  name="customer_name"
+                  onBlur={form.handleBlurEvent}
+                  onChange={form.handleChangeEvent}
+                  value={fields.customer_name}
+                  // To override the attribute name
+                  data-attribute-name="Customer Name"
+                  data-async
+                />
+              </div>
+
+              <label className="error text-red-500 ">
+                {errors.customer_name ? "The full name field is required" : ""}
+              </label>
             </div>
-            <div
-              className="flex items-center border border-white rounded-md py-[14px] px-[12px] my-5"
-              style={{ border: "1px solid white" }}
-            >
-              <img src={mail} alt="Profile" />
-              <input
-                className="ml-4 w-full text-white"
-                type="email"
-                placeholder="Enter your email address"
-              />
+
+            <div className="my-5">
+              <div
+                className="flex items-center border border-white rounded-md py-[14px] px-[12px] "
+                style={{ border: "1px solid white" }}
+              >
+                <img src={mail} alt="Profile" />
+                <input
+                  className="ml-4 w-full text-white"
+                  type="email"
+                  name="email_address"
+                  placeholder="Enter your email address"
+                  onBlur={form.handleBlurEvent}
+                  onChange={form.handleChangeEvent}
+                  value={fields.email_address}
+                />
+              </div>
+              <label className="error text-red-500">
+                {errors.email_address ? errors.email_address : ""}
+              </label>
             </div>
+
             <button className="formBtn text-white">Get early access</button>
           </form>
         </div>
