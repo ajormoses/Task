@@ -44,7 +44,7 @@ const ArticleOne = () => {
   };
 
   return (
-    <div className=" pt-24 md:pt-[6.5rem] ">
+    <div className=" pt-24 md:pt-[6.5rem]">
       <div className="relative  pb-10 md:pt-20">
         <img
           className="absolute top-0 right-4 md:right-[11rem] lg:right-[13rem] x:right-[15rem] w-5 h-5 md:w-[50px] lg:w-[80px] md:h-[50px] lg:h-[80px] "

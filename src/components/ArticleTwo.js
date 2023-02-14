@@ -207,9 +207,7 @@ const ArticleTwo = () => {
             </label>
           </p>
 
-          <p>
-            <button type="submit">Send Request</button>
-          </p>
+          <button type="submit">Send Request</button>
         </form>
       </div>
       {modal && <Modal modal={modal} />}
