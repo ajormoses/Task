@@ -7,6 +7,7 @@ const Modal = (modal) => {
     click && (
       <div className="modal" onClick={() => isClick(!click)}>
         <div
+          onClick={(e) => e.stopPropagation()}
           style={{ padding: "3rem 1.5rem" }}
           className="modal-content text-white text-center sm:w-[400px] md:w-[450px]"
         >
