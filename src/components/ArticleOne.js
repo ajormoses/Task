@@ -9,9 +9,6 @@ import curveArrow from "../images/curve-arrow.svg";
 import star from "../images/star.svg";
 
 const ArticleOne = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
   const [fields, errors, form] = useFormInputValidation(
     {
       customer_name: "",
