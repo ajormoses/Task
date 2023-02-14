@@ -47,7 +47,7 @@ const ArticleOne = () => {
   };
 
   return (
-    <div className=" pt-24 md:pt-[6.5rem] text-center">
+    <div className=" pt-24 md:pt-[6.5rem] ">
       <div className="relative  pb-10 md:pt-20">
         <img
           className="absolute top-0 right-4 md:right-[11rem] lg:right-[13rem] x:right-[15rem] w-5 h-5 md:w-[50px] lg:w-[80px] md:h-[50px] lg:h-[80px] "
@@ -85,11 +85,11 @@ const ArticleOne = () => {
         />
 
         <div className="container relative z-10">
-          <h1 className="text-white font-extrabold text-[40px] md:text-[50px] xl:text-[55px] x:text-[62px] md:px-[3rem] lg:px-[10rem] lg:pt-[2rem] xl:px-[15rem] leading-[3.5rem] x:leading-[4.5rem]">
+          <h1 className="text-white font-extrabold text-center text-[40px] md:text-[50px] xl:text-[55px] x:text-[62px] md:px-[3rem] lg:px-[10rem] lg:pt-[2rem] xl:px-[15rem] leading-[3.5rem] x:leading-[4.5rem]">
             Turn your best customers into
             <span className="text-[#BA2AD1]"> Loyal fans</span>
           </h1>
-          <p className="leading-[25px] text-[#FCFCFC] py-4 font-normal text-[15px] xl:text-[17px] md:px-[4rem] lg:px-[10rem] xl:px-[18rem] x:px-[20rem]">
+          <p className="leading-[25px] text-[#FCFCFC] py-4 font-normal text-center text-[15px] xl:text-[17px] md:px-[4rem] lg:px-[10rem] xl:px-[18rem] x:px-[20rem]">
             Loyalbaze, empowers businesses to offer digital, mobile-first
             loyalty programs to their customers. With our AI Powered platform,
             you can easily create and manage custom loyalty and rewards
