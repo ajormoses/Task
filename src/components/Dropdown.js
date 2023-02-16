@@ -13,8 +13,6 @@ const Dropdown = () => {
       .then((value) => setValue(value));
   }, []);
 
-  console.log(value);
-
   return (
     <div
       onClick={(e) => setIsActive(!isActive)}
