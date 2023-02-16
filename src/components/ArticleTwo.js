@@ -203,7 +203,7 @@ const ArticleTwo = () => {
             />
 
             <label className="error text-red-500">
-              {errors.company ? "The comment field is required" : ""}
+              {errors.message ? "The comment field is required" : ""}
             </label>
           </p>
 
