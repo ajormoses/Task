@@ -155,7 +155,7 @@ const ArticleTwo = () => {
 
           <p>
             <input
-              type="tel"
+              type="number"
               name="phone_number"
               placeholder="Mobile number"
               onBlur={form.handleBlurEvent}
